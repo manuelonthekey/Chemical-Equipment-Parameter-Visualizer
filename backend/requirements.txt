@@ -1,0 +1,14 @@
+# Web Framework and API
+Django>=4.2,<5.0       # The main backend framework 
+djangorestframework    # For creating the API to be consumed by React/PyQt5 
+django-cors-headers    # Required to allow the React frontend to communicate with Django
+
+# Data Analysis
+pandas                 # For reading CSV files and calculating statistics 
+numpy                  # Dependency for Pandas, useful for numerical operations
+
+# PDF Generation
+reportlab              # Required for generating PDF reports [cite: 17]
+
+# Utilities
+requests               # Useful if the backend needs to make external calls (optional but recommended)

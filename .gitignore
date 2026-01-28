@@ -1,0 +1,41 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+.env
+.env.*
+.venv/
+venv/
+
+# Django
+backend/db.sqlite3
+backend/media/
+backend/staticfiles/
+backend/*.sqlite3
+
+# Node / React
+frontend-web/node_modules/
+frontend-web/.env.local
+frontend-web/.cache
+frontend-web/build/
+
+# PyQt Desktop
+frontend-desktop/venv/
+frontend-desktop/*.spec
+
