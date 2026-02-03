@@ -5,7 +5,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "YOUR_BACKEND_URL/:splat" # You need to replace this with your actual backend URL
+  to = "https://equipzense.onrender.com/:splat" # You need to replace this with your actual backend URL
   status = 200
 
 [[redirects]]
