@@ -70,7 +70,7 @@ const Dashboard = () => {
         return;
       }
       const res = await axios.post(
-        "http://localhost:8000/api/upload/",
+        `${process.env.REACT_APP_API_URL}/api/upload/`,
         formData,
         {
           headers: {
@@ -109,7 +109,9 @@ const Dashboard = () => {
     return stats.records.filter((r) => {
       const nameOk =
         !searchTerm ||
-        String(r["Equipment Name"]).toLowerCase().includes(searchTerm.toLowerCase());
+        String(r["Equipment Name"])
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
       const typeOk = selectedType === "All" || r["Type"] === selectedType;
       const f = parseFloat(r["Flowrate"]);
       const p = parseFloat(r["Pressure"]);
@@ -125,7 +127,17 @@ const Dashboard = () => {
         (tempMax === "" || t <= parseFloat(tempMax));
       return nameOk && typeOk && flowOk && pressOk && tempOk;
     });
-  }, [stats, selectedType, searchTerm, flowMin, flowMax, pressMin, pressMax, tempMin, tempMax]);
+  }, [
+    stats,
+    selectedType,
+    searchTerm,
+    flowMin,
+    flowMax,
+    pressMin,
+    pressMax,
+    tempMin,
+    tempMax,
+  ]);
 
   const names = filteredRecords.map((r) => r["Equipment Name"]);
   const flowSeries = filteredRecords.map((r) => r["Flowrate"]);
@@ -542,9 +554,10 @@ const Dashboard = () => {
                 <table>
                   <thead>
                     <tr>
-                      {stats.records && Object.keys(stats.records[0]).map((key) => (
-                        <th key={key}>{key}</th>
-                      ))}
+                      {stats.records &&
+                        Object.keys(stats.records[0]).map((key) => (
+                          <th key={key}>{key}</th>
+                        ))}
                     </tr>
                   </thead>
                   <tbody>

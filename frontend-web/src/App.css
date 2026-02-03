@@ -420,11 +420,16 @@ tr:last-child td {
   margin-right: 20px;
   font-size: 1.2rem;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
 }
 
 .theme-btn:hover {
   background-color: var(--bg-color);
   border-color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 /* Navbar theme overrides */

@@ -24,7 +24,7 @@ const FileUpload = ({ onUploadSuccess }) => {
       }
       // Sending to the Backend API
       const res = await axios.post(
-        "http://localhost:8000/api/upload/",
+        `${process.env.REACT_APP_API_URL}/api/upload/`,
         formData,
         {
           headers: {

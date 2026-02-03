@@ -29,9 +29,12 @@ const History = () => {
 
   const handleView = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/history/${id}/`, {
-        headers: { Authorization: `Token ${token}` },
-      });
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/history/${id}/`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        },
+      );
       navigate("/", { state: { historyData: res.data } });
     } catch (err) {
       console.error("Failed to load history item", err);
