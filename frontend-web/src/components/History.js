@@ -35,7 +35,7 @@ const History = () => {
           headers: { Authorization: `Token ${token}` },
         },
       );
-      navigate("/", { state: { historyData: res.data } });
+      navigate(`/analysis/${id}`, { state: { stats: res.data } });
     } catch (err) {
       console.error("Failed to load history item", err);
     }
