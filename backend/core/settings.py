@@ -9,10 +9,10 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-me-for-production')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fc692b861c81649de96ab3f89d049735')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = str(os.environ.get('DEBUG', 'False')).lower() == 'true'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 
@@ -104,7 +104,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS Configuration
 # Allows the React Frontend to access the API
-CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', "http://localhost:3000").split(',')
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', "https://chemical-equipment-parameter-visualizer-1-3f2h.onrender.com").split(',')
 # If you want to allow all origins (not recommended for production but useful for troubleshooting):
 # CORS_ALLOW_ALL_ORIGINS = True
 
