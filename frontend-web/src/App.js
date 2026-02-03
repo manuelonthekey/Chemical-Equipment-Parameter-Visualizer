@@ -5,8 +5,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar";
+import HeroBanner from "./components/HeroBanner";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import History from "./components/History";
@@ -24,15 +24,9 @@ function App() {
         <Router>
           <div className="App">
             <Navbar />
+            <HeroBanner />
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <PrivateRoute>
-                    <Dashboard />
-                  </PrivateRoute>
-                }
-              />
+              <Route path="/" element={<Navigate to="/upload" />} />
               <Route
                 path="/upload"
                 element={
@@ -59,7 +53,7 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="*" element={<Navigate to="/upload" />} />
             </Routes>
           </div>
         </Router>

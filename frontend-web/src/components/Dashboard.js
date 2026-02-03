@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useTheme } from "../context/ThemeContext";
 
 // Register Chart.js components
 ChartJS.register(
@@ -22,34 +23,37 @@ ChartJS.register(
 );
 
 const Dashboard = ({ stats }) => {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+  const gridColor = isDark
+    ? "rgba(237, 233, 254, 0.14)"
+    : "rgba(30, 41, 59, 0.12)";
+  const tickColor = isDark
+    ? "rgba(237, 233, 254, 0.75)"
+    : "rgba(30, 41, 59, 0.7)";
+  const axisBorder = isDark
+    ? "rgba(237, 233, 254, 0.2)"
+    : "rgba(30, 41, 59, 0.2)";
   const location = useLocation();
   const localStats = stats || location.state?.stats;
   if (!localStats)
     return (
       <div className="app-container">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+        <div className="dashboard-header">
           <h2>Dashboard</h2>
-          <div>
-            <Link to="/upload" className="reset-btn" style={{ marginRight: 8 }}>
-              Upload
-            </Link>
-            <Link to="/history" className="reset-btn">
-              History
-            </Link>
-          </div>
         </div>
 
         <div className="card" style={{ marginTop: 20 }}>
           <h3>No data loaded</h3>
           <p style={{ color: "var(--text-secondary)" }}>
-            Upload a CSV or select an item from{" "}
-            <Link to="/history">History</Link> to view an analysis report.
+            <Link to="/upload" className="text-link">
+              Upload
+            </Link>{" "}
+            a CSV or select an item from{" "}
+            <Link to="/history" className="text-link">
+              History
+            </Link>{" "}
+            to view an analysis report.
           </p>
         </div>
       </div>
@@ -83,9 +87,22 @@ const Dashboard = ({ stats }) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: { position: "top" },
       title: { display: true, text: "Equipment Average Metrics" },
+    },
+    scales: {
+      x: {
+        grid: { color: gridColor },
+        ticks: { color: tickColor },
+        border: { color: axisBorder },
+      },
+      y: {
+        grid: { color: gridColor },
+        ticks: { color: tickColor },
+        border: { color: axisBorder },
+      },
     },
   };
 
@@ -96,14 +113,28 @@ const Dashboard = ({ stats }) => {
         <strong>Total Equipment Count:</strong> {localStats.total_count}
       </p>
 
-      <div style={{ display: "flex", gap: 12, marginTop: 12 }}>
+      <div className="stat-row">
         <div className="stat-card card" style={{ flex: 1 }}>
           <div>
             <svg className="icon" viewBox="0 0 24 24" fill="none">
               <path
-                d="M3 12h18"
+                d="M4 12h10"
                 stroke="currentColor"
                 strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M12 7l4 5-4 5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M4 7c1.4 0 1.4 2 2.8 2s1.4-2 2.8-2"
+                stroke="currentColor"
+                strokeWidth="1.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -117,12 +148,27 @@ const Dashboard = ({ stats }) => {
           <div>
             <svg className="icon" viewBox="0 0 24 24" fill="none">
               <path
-                d="M12 3v18"
+                d="M4 13a8 8 0 0116 0"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
+              <path
+                d="M12 13l3-3"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M7 13h10"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <circle cx="12" cy="13" r="1.2" fill="currentColor" />
             </svg>
             <span className="label">Pressure</span>
           </div>
@@ -133,19 +179,20 @@ const Dashboard = ({ stats }) => {
           <div>
             <svg className="icon" viewBox="0 0 24 24" fill="none">
               <path
-                d="M12 2v8"
+                d="M10 4a2 2 0 114 0v8a4 4 0 11-4 0V4z"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
-                d="M8 14h8"
+                d="M10 12h4"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
+              <circle cx="12" cy="18" r="1.6" fill="currentColor" />
             </svg>
             <span className="label">Temperature</span>
           </div>
@@ -153,7 +200,7 @@ const Dashboard = ({ stats }) => {
         </div>
       </div>
 
-      <div style={{ marginTop: "20px" }}>
+      <div className="chart-container chart-container-sm" style={{ marginTop: 20 }}>
         <Bar data={chartData} options={options} />
       </div>
     </div>

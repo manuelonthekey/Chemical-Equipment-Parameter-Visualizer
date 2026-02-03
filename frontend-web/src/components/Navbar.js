@@ -24,21 +24,45 @@ const Navbar = () => {
       <div className="nav-links">
         {user ? (
           <>
-            {path.startsWith('/analysis') ? (
+            {path.startsWith("/upload") ? (
               <>
                 <Link to="/">Dashboard</Link>
-                <Link to="/history">History</Link>
+                <Link to="/history" className="history-link">
+                  History
+                </Link>
+                <button onClick={handleLogout} className="logout-btn">
+                  Logout
+                </button>
               </>
-            ) : path.startsWith('/upload') ? (
-              <Link to="/history">History</Link>
-            ) : (
+            ) : path.startsWith("/history") ? (
               <>
                 <Link to="/">Dashboard</Link>
                 <Link to="/upload">Upload</Link>
-                <Link to="/history">History</Link>
+                <button onClick={handleLogout} className="logout-btn">
+                  Logout
+                </button>
+              </>
+            ) : path.startsWith("/analysis") ? (
+              <>
+                <Link to="/">Dashboard</Link>
+                <Link to="/history" className="history-link">
+                  History
+                </Link>
+                <button onClick={handleLogout} className="logout-btn">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/upload">Upload</Link>
+                <Link to="/history" className="history-link">
+                  History
+                </Link>
+                <button onClick={handleLogout} className="logout-btn">
+                  Logout
+                </button>
               </>
             )}
-            <button onClick={handleLogout} className="logout-btn">Logout</button>
           </>
         ) : (
           <>
@@ -46,7 +70,11 @@ const Navbar = () => {
             <Link to="/register">Register</Link>
           </>
         )}
-        <button onClick={toggleTheme} className="theme-btn" aria-label="Toggle Theme">
+        <button
+          onClick={toggleTheme}
+          className="theme-btn"
+          aria-label="Toggle Theme"
+        >
           {theme === "light" ? (
             // Moon icon (for switching to dark)
             <svg

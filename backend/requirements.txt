@@ -8,6 +8,7 @@ djangorestframework==3.16.1
 gunicorn==25.0.1
 idna==3.11
 numpy==2.4.1
+matplotlib==3.10.6
 packaging==26.0
 pandas==3.0.0
 pillow==12.1.0
