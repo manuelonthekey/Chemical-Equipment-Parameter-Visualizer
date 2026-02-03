@@ -1,0 +1,14 @@
+[build]
+  base = "frontend-web"
+  command = "npm install && npm run build"
+  publish = "build"
+
+[[redirects]]
+  from = "/api/*"
+  to = "YOUR_BACKEND_URL/:splat" # You need to replace this with your actual backend URL
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
