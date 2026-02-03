@@ -20,6 +20,11 @@ services:
           type: static
           name: chemical-equipment-visualizer-frontend
           property: url
+      - key: FRONTEND_URL
+        fromService:
+          type: static
+          name: chemical-equipment-visualizer-frontend
+          property: url
 
 staticSites:
   # Frontend Static Site

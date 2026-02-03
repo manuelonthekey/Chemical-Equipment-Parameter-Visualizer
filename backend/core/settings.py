@@ -15,6 +15,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'fc692b861c81649de96ab3f89d049735')
 DEBUG = str(os.environ.get('DEBUG', 'False')).lower() == 'true'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+FRONTEND_URL = os.environ.get('FRONTEND_URL', '')
 
 # Application definition
 INSTALLED_APPS = [
