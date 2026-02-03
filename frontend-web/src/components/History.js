@@ -11,7 +11,7 @@ const History = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/history/", {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/history/`, {
           headers: {
             Authorization: `Token ${token}`,
           },
