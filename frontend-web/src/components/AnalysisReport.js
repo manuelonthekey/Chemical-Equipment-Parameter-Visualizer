@@ -158,33 +158,6 @@ const AnalysisReport = () => {
         </div>
       </div>
 
-      <div className="card" style={{ marginTop: 20 }}>
-        <h3>Sample Records</h3>
-        <div style={{ overflowX: "auto" }}>
-          <table>
-            <thead>
-              <tr>
-                <th>Equipment Name</th>
-                <th>Type</th>
-                <th>Flowrate</th>
-                <th>Pressure</th>
-                <th>Temperature</th>
-              </tr>
-            </thead>
-            <tbody>
-              {stats.preview.map((r, idx) => (
-                <tr key={idx}>
-                  <td>{r['Equipment Name']}</td>
-                  <td>{r['Type']}</td>
-                  <td>{r['Flowrate']}</td>
-                  <td>{r['Pressure']}</td>
-                  <td>{r['Temperature']}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
   );
 };

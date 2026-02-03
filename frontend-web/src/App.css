@@ -1,6 +1,7 @@
 :root {
   --primary-color: #3b82f6;
   --primary-hover: #2563eb;
+  --primary-bg-hover: #eff6ff;
   --bg-color: #f8fafc;
   --card-bg: #ffffff;
   --text-primary: #1e293b;
@@ -8,6 +9,8 @@
   --border-color: #e2e8f0;
   --success-color: #10b981;
   --error-color: #ef4444;
+  --error-bg: #fef2f2;
+  --btn-text: #ffffff;
 }
 
 [data-mode="pdf"] {
@@ -29,6 +32,9 @@
   --border-color: #334155;
   --primary-color: #60a5fa;
   --primary-hover: #3b82f6;
+  --primary-bg-hover: #1e293b;
+  --error-bg: #2c1d1d;
+  --btn-text: #ffffff;
 }
 
 body {
@@ -103,7 +109,7 @@ body {
 .drop-zone:hover,
 .drop-zone.dragging {
   border-color: var(--primary-color);
-  background-color: #eff6ff;
+  background-color: var(--primary-bg-hover);
   transform: translateY(-2px);
 }
 
@@ -157,7 +163,7 @@ body {
 .error-message {
   margin-top: 20px;
   color: var(--error-color);
-  background: #fef2f2;
+  background: var(--error-bg);
   padding: 10px;
   border-radius: 6px;
   font-size: 0.9rem;
@@ -321,10 +327,12 @@ tr:last-child td {
   border-radius: 6px;
   cursor: pointer;
   color: var(--text-secondary);
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .logout-btn:hover {
-  background-color: #f1f5f9;
+  background-color: var(--bg-color);
   color: var(--error-color);
   border-color: var(--error-color);
 }
@@ -380,7 +388,7 @@ tr:last-child td {
 .auth-btn {
   width: 100%;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--btn-text);
   padding: 0.75rem;
   border: none;
   border-radius: 6px;
@@ -445,7 +453,6 @@ tr:last-child td {
   margin-top: 6px;
 }
 
-
 .history-table th {
   color: var(--text-secondary);
   font-weight: 600;
@@ -459,9 +466,9 @@ tr:last-child td {
 /* Theme Button */
 .theme-btn {
   background: none;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   padding: 8px;
-  border-radius: 50%;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 1.2rem;
   transition: all 0.2s;
@@ -469,6 +476,8 @@ tr:last-child td {
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
+  height: 36px;
+  width: 36px;
 }
 
 .theme-btn:hover {

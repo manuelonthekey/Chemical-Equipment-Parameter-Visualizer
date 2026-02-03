@@ -24,25 +24,21 @@ const Navbar = () => {
       <div className="nav-links">
         {user ? (
           <>
-            {path.startsWith('/upload') ? (
-              <>
-                <Link to="/history">History</Link>
-                <button onClick={handleLogout} className="logout-btn">Logout</button>
-              </>
-            ) : path.startsWith('/analysis') ? (
+            {path.startsWith('/analysis') ? (
               <>
                 <Link to="/">Dashboard</Link>
                 <Link to="/history">History</Link>
-                <button onClick={handleLogout} className="logout-btn">Logout</button>
               </>
+            ) : path.startsWith('/upload') ? (
+              <Link to="/history">History</Link>
             ) : (
               <>
                 <Link to="/">Dashboard</Link>
                 <Link to="/upload">Upload</Link>
                 <Link to="/history">History</Link>
-                <button onClick={handleLogout} className="logout-btn">Logout</button>
               </>
             )}
+            <button onClick={handleLogout} className="logout-btn">Logout</button>
           </>
         ) : (
           <>
